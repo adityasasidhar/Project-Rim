@@ -2,8 +2,9 @@ from diffusers import StableDiffusionPipeline
 import os
 import torch
 
-# Folder to save generated images
-output_folder = "static/images"
+print(torch.cuda.is_available())
+
+output_folder = "AI generate images"
 
 def clear_cuda_cache():
     torch.cuda.empty_cache()  # Frees the GPU memory cache
@@ -39,22 +40,22 @@ def stablediffusion_generate_image(prompt, guidance_scale=10, num_inference_step
 
 os.makedirs(output_folder, exist_ok=True)
 
-prompt = "An Astronaut riding a horse on mars"
+prompt = "a small and a vibrant garden with butterflies"
 
 # Generate 4K image
-print(f"Generating 4K image for prompt: \"{prompt}\"")
+print(f"Generating image for prompt: \"{prompt}\"")
 image = stablediffusion_generate_image(
     prompt=prompt,
     height=512,
     width=512,
-    guidance_scale= 13,
-    num_inference_steps=300,
+    guidance_scale= 7,
+    num_inference_steps=500,
     seed=42
 )
 
 # Save the image to the output directory
-output_path = os.path.join(output_folder, "astronaut.png")
+output_path = os.path.join(output_folder, f"{prompt}.png")
 image.save(output_path)
-print(f"4K Image saved at: {output_path}")
+print(f"Image saved at: {output_path}")
 clear_cuda_cache()
 

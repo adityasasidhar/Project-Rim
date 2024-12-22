@@ -10,8 +10,6 @@ nlp = spacy.load("en_core_web_sm")
 app = Flask(__name__)
 
 # Open the file in read mode ('r') and read its content
-with open('conetext.txt', 'arw') as file:
-    content = file.read()
 
 def clear_cuda_cache():
     torch.cuda.empty_cache()  # Frees the GPU memory cache
@@ -24,14 +22,9 @@ def report_cuda_memory():
 
 report_cuda_memory()
 clear_cuda_cache()
-
-
-llama321Binstruct_tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct", pad_token="[PAD]")
-llama321Binstruct_model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")
-llama321Binstruct_model.to('cuda')
-
+llama321Binstruct_tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-1B-Instruct", pad_token="[PAD]")
+llama321Binstruct_model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-3.2-1B-Instruct")
 report_cuda_memory()
-
 
 def llama321Binstruct(prompt,context_file=None):
     inputs = llama321Binstruct_tokenizer(prompt, return_tensors="pt", padding=True)
