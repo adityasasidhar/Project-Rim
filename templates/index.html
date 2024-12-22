@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Rim</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Project Rim</h1>
+        <div id="date-time"></div>
+    </div>
+    <div id="chat-box"></div>
+    <div class="input-container">
+        <textarea id="user-input" placeholder="Type your message..." onkeypress="checkEnter(event)"></textarea>
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <script src="/static/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+/* General Layout */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2e2e2e; /* Dark background theme */
+    color: #d4d4d4; /* Light gray text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#chat-box {
+    width: 100%;
+    max-width: 600px; /* Limit to WhatsApp-style chat width */
+    height: 80vh; /* Fixed height for the chat box */
+    background-color: #1f1f1f; /* Slightly darker gray for the chat background */
+    border-radius: 15px; /* Rounded rectangle */
+    overflow-y: auto; /* Enable scrolling for overflow */
+    padding: 10px; /* Add some padding for the chat */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow effect */
+}
+
+/* User Message Style (Right) */
+#chat-box .user-message {
+    text-align: right;
+    background-color: #3b3b3b; /* Lighter gray for user messages */
+    color: #d4d4d4; /* Light gray text for visibility */
+    padding: 8px 12px;
+    margin: 5px 0;
+    display: inline-block;
+    border-radius: 10px 10px 0px 10px; /* Rounded edges */
+    max-width: 70%; /* Ensure the bubble doesn't stretch */
+    margin-left: auto; /* Align to the right */
+}
+
+/* AI Message Style (Left) */
+#chat-box .ai-message {
+    text-align: left;
+    background-color: #505050; /* Slightly darker gray for AI messages */
+    color: #d4d4d4; /* Light gray text for visibility */
+    padding: 8px 12px;
+    margin: 5px 0;
+    display: inline-block;
+    border-radius: 10px 10px 10px 0px; /* Rounded edges */
+    max-width: 70%; /* Balanced width for the message bubble */
+    margin-right: auto; /* Align to the left */
+}
+
+/* Input Section */
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px; /* Match chatbox width */
+    background-color: #1f1f1f; /* Dark background for input container */
+    padding: 10px;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.5); /* Create shadow at the top */
+    border-top: 1px solid #3b3b3b; /* Subtle separator */
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #3b3b3b; /* Matches the container */
+    border-radius: 25px; /* Rounded edges for the input field */
+    font-size: 14px;
+    color: #d4d4d4;
+    background-color: #2d2d2d;
+    outline: none;
+}
+
+#user-input::placeholder {
+    color: #8c8c8c; /* Subtle placeholder color */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #707070; /* Light gray button background */
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 20px; /* Rounded button */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #555555; /* Darker gray on hover */
+}
