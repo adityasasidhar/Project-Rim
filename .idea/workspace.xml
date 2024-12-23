@@ -18,10 +18,7 @@
     </option>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e102717-bb8b-4b6a-a8db-50171c45a85c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trystablediffusermodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/trystablediffusermodel.py" afterDir="false" />
-    </list>
+    <list default="true" id="1e102717-bb8b-4b6a-a8db-50171c45a85c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,6 +114,7 @@
       <workItem from="1734888565623" duration="3238000" />
       <workItem from="1734892134031" duration="6000" />
       <workItem from="1734930223405" duration="611000" />
+      <workItem from="1734963374760" duration="272000" />
     </task>
     <servers />
   </component>
