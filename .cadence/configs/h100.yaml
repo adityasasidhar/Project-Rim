@@ -1,0 +1,50 @@
+project_name: Default
+working_dir: "."
+cmd:
+- python trystablediffusermodel.py
+provisioning:
+  gpu_type: h100
+  gpu_count: 1
+  cpu_count: 20
+  ram: 160
+teamcity:
+  url: https://mlops.staging.sandbox.teamcity.aws.intellij.net
+  build_conf_id: id922713a1a6144881a8abE171a7d7159b_JetTrain
+env:
+  variables: {}
+  python:
+    pip:
+      requirements_path: requirements.txt
+    version: 3.10.0
+  secrets:
+    variables: {}
+    ssh_keys: []
+  aws:
+    sync_config: false
+    sync_credentials: false
+    sync_cache: false
+project_sync:
+  local:
+    root: "."
+    storage_name: Cadence Storage
+    uri: ""
+    exclude:
+    - C:/Users/telik/PycharmProjects/ProjectRim/.venv/**
+    - C:/Users/telik/PycharmProjects/ProjectRim/AI
+    - generated
+    - images
+    include: []
+    sync_back: false
+    snapshots: true
+    storage_type: DEFAULT
+inputs: []
+outputs:
+- type: OUTPUT
+  storage_name: Cadence Storage
+  uri: ""
+  path: "."
+  acceleration: false
+  storage_type: DEFAULT
+mounts: []
+storages: []
+description: ""
