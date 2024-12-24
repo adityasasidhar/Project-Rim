@@ -4,18 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Rim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <div class="header">
-        <h1>Project Rim</h1>
-        <div id="date-time"></div>
-    </div>
-    <div id="chat-box"></div>
+    <!-- Project Rim Title -->
+    <div id="project-title">Project Rim</div>
+
+    <!-- Live Date and Time -->
+    <div id="date-time"></div>
+
+    <!-- Chat Area -->
+    <main id="chat-background">
+        <!-- Chat messages will dynamically appear here -->
+    </main>
+
+    <!-- Input Section -->
     <div class="input-container">
         <textarea id="user-input" placeholder="Type your message..." onkeypress="checkEnter(event)"></textarea>
         <button onclick="sendMessage()">Send</button>
     </div>
+
     <script src="/static/scripts.js"></script>
 </body>
 </html>

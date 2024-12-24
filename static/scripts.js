@@ -1,4 +1,4 @@
-// Frontend functionality for sending messages and interacting with the backend.
+// Function to send a message
 function sendMessage() {
     const userInput = document.getElementById('user-input');
     const message = userInput.value.trim();
@@ -8,13 +8,13 @@ function sendMessage() {
         return;
     }
 
-    // Append user's message to the chat box
-    appendMessage(message, "user-message");
+    // Append user's message
+    appendMessage(message, "floating-message user-message");
 
     // Clear the input field
     userInput.value = "";
 
-    // Send the message to the backend
+    // Simulate sending the message to a backend
     fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -23,8 +23,8 @@ function sendMessage() {
         .then(response => response.json())
         .then(data => {
             if (data.response) {
-                // Append the AI's response to the chat box
-                appendMessage(data.response, "ai-message");
+                // Append the AI's response
+                appendMessage(data.response, "floating-message ai-message");
             } else {
                 console.error("Invalid response from server:", data);
             }
@@ -32,14 +32,31 @@ function sendMessage() {
         .catch(error => console.error("Error communicating with server:", error));
 }
 
+// Function to append a message
 function appendMessage(message, className) {
-    const chatBox = document.getElementById('chat-box');
+    const chatBackground = document.getElementById('chat-background');
     const messageDiv = document.createElement('div');
     messageDiv.className = className;
     messageDiv.innerText = message;
-    chatBox.appendChild(messageDiv);
-    chatBox.scrollTop = chatBox.scrollHeight;
+
+    chatBackground.appendChild(messageDiv);
+
+    // Automatically scroll to the latest message
+    chatBackground.scrollTop = chatBackground.scrollHeight;
 }
+
+// Live Date and Time
+function updateDateTime() {
+    const now = new Date();
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    const date = now.toLocaleDateString('en-US', options);
+    const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    document.getElementById('date-time').innerText = `${date}, ${time}`;
+}
+
+// Update date and time every second
+setInterval(updateDateTime, 1000);
+updateDateTime();
 
 // Handle 'Enter' key to send message
 function checkEnter(event) {
@@ -48,6 +65,3 @@ function checkEnter(event) {
         sendMessage();
     }
 }
-
-// Set current date/time in the header
-document.getElementById('date-time').innerText = new Date().toLocaleString();

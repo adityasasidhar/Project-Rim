@@ -1,93 +1,137 @@
 /* General Layout */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #2e2e2e; /* Dark background theme */
-    color: #d4d4d4; /* Light gray text */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #1a1a1a; /* Dark background */
+    color: white;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Hide scrollbars */
 }
 
-#chat-box {
+/* Project Title */
+#project-title {
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    margin: 20px 0;
+    color: white;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+/* Date and Time */
+#date-time {
+    color: #d0d0d0;
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* Chat Background */
+#chat-background {
+    position: relative;
     width: 100%;
-    max-width: 600px; /* Limit to WhatsApp-style chat width */
-    height: 80vh; /* Fixed height for the chat box */
-    background-color: #1f1f1f; /* Slightly darker gray for the chat background */
-    border-radius: 15px; /* Rounded rectangle */
-    overflow-y: auto; /* Enable scrolling for overflow */
-    padding: 10px; /* Add some padding for the chat */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow effect */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align AI messages to the left */
+    padding: 10px 20px;
+    overflow-y: auto; /* Allow scrolling if too many messages */
 }
 
-/* User Message Style (Right) */
-#chat-box .user-message {
-    text-align: right;
-    background-color: #3b3b3b; /* Lighter gray for user messages */
-    color: #d4d4d4; /* Light gray text for visibility */
-    padding: 8px 12px;
+/* Chat Message Styles */
+.floating-message {
+    background-color: #333333; /* Dark gray chat bubbles */
+    color: white;
+    padding: 10px 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 10px;
+    word-wrap: break-word;
+    max-width: 70%;
     margin: 5px 0;
-    display: inline-block;
-    border-radius: 10px 10px 0px 10px; /* Rounded edges */
-    max-width: 70%; /* Ensure the bubble doesn't stretch */
-    margin-left: auto; /* Align to the right */
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-/* AI Message Style (Left) */
-#chat-box .ai-message {
-    text-align: left;
-    background-color: #505050; /* Slightly darker gray for AI messages */
-    color: #d4d4d4; /* Light gray text for visibility */
-    padding: 8px 12px;
-    margin: 5px 0;
-    display: inline-block;
-    border-radius: 10px 10px 10px 0px; /* Rounded edges */
-    max-width: 70%; /* Balanced width for the message bubble */
-    margin-right: auto; /* Align to the left */
+/* AI Messages (Align to Left) */
+.floating-message.ai-message {
+    align-self: flex-start;
+    margin-left: 200px;
+    background-color: #292929; /* Slightly darker gray */
+}
+
+/* User Messages (Align to Right) */
+.floating-message.user-message {
+    align-self: flex-end;
+    margin-right: 200px;
+    background-color: #444444; /* Slightly lighter gray */
 }
 
 /* Input Section */
 .input-container {
+    position: fixed; /* Fix position to the viewport */
+    left: 50%; /* Center horizontally */
+    bottom: 0; /* Stick to the bottom */
+    transform: translateX(-50%); /* Adjust position to center */
+    width: 100%;
+    max-width: 600px; /* Set a max width for the input container */
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width: 600px; /* Match chatbox width */
-    background-color: #1f1f1f; /* Dark background for input container */
-    padding: 10px;
-    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.5); /* Create shadow at the top */
-    border-top: 1px solid #3b3b3b; /* Subtle separator */
+    background-color: #1A1A1A;
+    padding: 15px;
+    gap: 10px;
 }
 
 #user-input {
     flex-grow: 1;
-    padding: 10px;
-    margin-right: 10px;
-    border: 1px solid #3b3b3b; /* Matches the container */
-    border-radius: 25px; /* Rounded edges for the input field */
+    padding: 12px 15px;
+    border: none;
+    border-radius: 10px;
     font-size: 14px;
-    color: #d4d4d4;
-    background-color: #2d2d2d;
+    background-color: #333333; /* Match message background */
+    color: white;
     outline: none;
+    resize: none;
+    height: 40px; /* Initial height */
+}
+
+#user-input:focus {
+    height: auto; /* Resize height as necessary */
 }
 
 #user-input::placeholder {
-    color: #8c8c8c; /* Subtle placeholder color */
+    color: #a0a0a0;
 }
 
 button {
     padding: 10px 20px;
-    background-color: #707070; /* Light gray button background */
+    background-color: #4b4b4b; /* Slightly lighter button */
     color: white;
     border: none;
-    outline: none;
-    border-radius: 20px; /* Rounded button */
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #555555; /* Darker gray on hover */
+    background-color: #5c5c5c;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
