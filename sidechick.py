@@ -3,6 +3,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, GPT2LMHeadModel, G
 from diffusers import StableDiffusionPipeline
 import spacy
 import torch
+import logging
 
 app = Flask(__name__)
 
@@ -23,6 +24,7 @@ llama321Binstructtokenizer.pad_token = llama321Binstructtokenizer.eos_token
 
 
 def llama321binstruct(prompt):
+    print("llama has been called")
     # Prepare the input data and ensure it is moved to the same device
     inputs = llama321Binstructtokenizer(prompt, return_tensors="pt", padding=True, truncation=True).to('cuda')
     with torch.no_grad():
@@ -33,6 +35,8 @@ def llama321binstruct(prompt):
             num_return_sequences=1,
             pad_token_id=llama321Binstructtokenizer.pad_token_id,
         )
+        print("llama response has been generated")
+        print(outputs)
     return llama321Binstructtokenizer.decode(outputs[0], skip_special_tokens=True)
 
 

@@ -28,14 +28,11 @@ def stablediffusion_generate_image(prompt, guidance_scale=10, num_inference_step
                                    seed=None, height=2160, width=3840, model_name='CompVis/stable-diffusion-v1-4',
                                    report_memory=False):
     # Set the seed
-    seed = seed or 1024
-    torch.manual_seed(seed)
+    seed = 42
 
     try:
         # Load the Stable Diffusion model pipeline
         model = StableDiffusionPipeline.from_pretrained(model_name).to('cuda')
-
-        # Report GPU memory if required
         if report_memory:
             report_cuda_memory()
 
@@ -63,12 +60,16 @@ if __name__ == "__main__":
     os.makedirs(output_folder, exist_ok=True)
 
     # Prompt & Settings
-    prompt = "A beautiful and colorful Himalayan valley with pink flowering trees, flowering plants, creeks and mountains in the backdrop"
-    height = 1024
-    width = 1024
-    guidance_scale = 10
-    num_inference_steps = 250
-    seed = 1024
+    prompt = (
+        "A stunning ultra-detailed 8K photorealistic digital painting of a scenic tulip field extending to the horizon,"
+        "with butterflies, a vivid clear blue sky, soft white scattered clouds, and warm afternoon sunlight. "
+        "Hyper-realistic, cinematic soft lighting, vibrant and surreal colors with painterly texture."
+    )
+    height = 2160
+    width = 3840
+    guidance_scale = 15
+    num_inference_steps = 500
+    seed = 42
 
     # Log the task start
     logging.info(f"Generating image for prompt: \"{prompt}\"")
@@ -84,9 +85,9 @@ if __name__ == "__main__":
     )
 
     # Handle image save
+    # Handle image save
     if image:
-        timestamp = time.strftime("%Y%m%d-%H%M%S")
-        output_path = os.path.join(output_folder, f"{prompt}_{timestamp}.png")
+        output_path = os.path.join(output_folder, "poppy.png")  # Save as 'poppy.png'
         image.save(output_path)
         logging.info(f"Image saved at: {output_path}")
     else:
