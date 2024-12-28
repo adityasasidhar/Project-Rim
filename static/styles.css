@@ -63,6 +63,7 @@ body {
 .floating-message.ai-message {
     align-self: flex-start;
     margin-left: 200px;
+    margin-right:600px;
     background-color: #292929; /* Slightly darker gray */
 }
 
